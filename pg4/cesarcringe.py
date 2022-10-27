@@ -1,13 +1,10 @@
-def fib(n:int):
-    return int(((1 + 5**0.5)**n - (1 - 5**0.5)**n) / (2**n + 5**0.5))
+def fib(n):
+    return int(((1 + 5**0.5)**n - (1 - 5**0.5)**n) // (2**n * 5**0.5))
 
 def caesar(message):
+    result = ""
     for i in range(len(message)):
-        print(chr(65 + (ord(message[i]) + fib(i)) % 26))
+        result += chr((ord(message[i]) - 65 - fib(i)) % 26 + 65) * message[i].isalpha() + message[i] * (not message[i].isalpha())
+    return result
 
-#caesar("HELLO WORLD!")
-
-char = 'A'
-print(fib(6))
-print(chr(65 + (ord(char) - 0) % 26))
-
+print(caesar("HELLO WORLD!"))
