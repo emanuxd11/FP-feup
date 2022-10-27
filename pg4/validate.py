@@ -24,4 +24,4 @@ def validate(grade):
 	except:
 		return False
 	
-print(validate('12'))                
+print(validate("69"[::-1]))                
