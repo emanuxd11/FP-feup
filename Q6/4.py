@@ -1,6 +1,6 @@
 def magic(mat):
     n = len(mat)
-
+    
     def check_lins(prev_sum = 0, curr_sum = 0):
         for i in range(n):
             curr_sum = sum(mat[i])
@@ -34,7 +34,7 @@ def magic(mat):
     diag_check = check_diag()
     if not diag_check:
         return False
-
+    
     return col_check == lin_check == diag_check
 
 print(magic([[17, 24, 1, 8, 16], [23, 5, 7, 15, 16], [4, 6, 14, 20, 22], [10, 13, 19, 21, 3], [12, 18, 25, 2, 9]]))
