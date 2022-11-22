@@ -8,6 +8,6 @@ def digits_average(n):
     return (int, digits_average).__getitem__(sum > 9)(sum)
 
 print(digits_average(158))
-
+    
 # For future reference (if I remember to come here lmao)
 # return  [int, digits_average][sum > 9](sum)
