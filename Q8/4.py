@@ -1,16 +1,36 @@
 def file_finder(dirs, file_name):
-    # print(f"Current directory {dirs[0]} contains {dirs[1]}")
-    # print("dirs1 = ", dirs[1])
-    for subdir in dirs[1]:
+    # dirname will be the name of our current parent
+    # directory and files will be the list of files, 
+    # including other directories, that it may contain
+    dirname, files = dirs
+    
+    # we iterate through each subdirectory in the files
+    # list until we get to one that isn't a directory
+    for subdir in files:
+        # we must then check if the subdir 
+        # variable is of type tuple
         if type(subdir) == tuple:
-            # print("subdir = ", subdir, "\n")
+            # it being a tuple means we've got more
+            # subdirectories to go through, hence
+            # the recursive call to our find function
             path = file_finder(subdir, file_name)
             if path:
-                print()
-                return subdir[0] + "/" + path
+                # if the path variable doesn't evaluate to 
+                # "None", we know we've found the file and
+                # therefore we add the name of our current
+                # directory to the file path
+                return f"{dirname}/{path}"
+
+        # when it isn't a tuple, we have reached the point
+        # where we only have files in the current directory
         else:
+            # at this point we check if the name of
+            # out current file matches the name of 
+            # the file we're looking for
             if subdir == file_name:
-                return dirs[0] + "/" + file_name
+                # if it does we return the name of our current
+                # plus the name of our file separated by a "/" 
+                return f"{dirname}/{file_name}"
 
 
 dirs1 = ("home", [
@@ -42,4 +62,4 @@ dirs2 = ("Movies", [
             "22", 
             "001.mp4"])
 
-print(file_finder(dirs1, 'hello_world.py'))
+print(file_finder(dirs1, "hello_world.py"))
